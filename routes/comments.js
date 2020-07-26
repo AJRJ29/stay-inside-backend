@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const router = express.Router()
 const Comment = require('../models/Comment')
@@ -12,10 +13,6 @@ router.get('/', (req, res) => {
 // Create
 router.post('/', (req, res) => {
   // check the body of the request for empty string and remove them from the body
-  console.log(':football:')
-  console.log(req.body)
-  console.log(':football:')
-  // res.send(req.body)
   Comment.create(req.body)
     .then(newComment => {
       res.send(newComment)
@@ -24,6 +21,7 @@ router.post('/', (req, res) => {
 })
 // Update
 router.put('/:id', (req, res) => {
+  
   Comment.findOneAndUpdate(
     {_id: req.params.id},
     req.body,
@@ -36,6 +34,7 @@ router.put('/:id', (req, res) => {
 })
 // Delete
 router.delete('/:id', (req, res) => {
+  
   Comment.findOneAndDelete({_id: req.params.id })
     .then(deleteComment => {
       console.log(deleteComment)
