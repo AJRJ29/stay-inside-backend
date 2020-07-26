@@ -9,7 +9,9 @@ const app = express()
 
 // require router
 const users = require('./routes/users')
+const events = require('./routes/events')
 const comments = require('./routes/comments')
+
 
 // middleware to allow to CORS requests
 app.use(function(req, res, next) {
@@ -44,7 +46,10 @@ require('./config/passport')(passport)
 
 // setup our routes
 app.use('/users', users)
+app.use('/events', events)
 app.use('/comments', comments)
+
 
 // start our server
 app.listen(process.env.PORT || 3000, () => console.log(`With my toes on port ${process.env.PORT} it's such a lovely view 🎧 `))
+

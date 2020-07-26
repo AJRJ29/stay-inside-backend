@@ -2,13 +2,12 @@ const express = require('express')
 const router = express.Router()
 const Comment = require('../models/Comment')
 // Show
-
 router.get('/', (req, res) => {
-  Comment.find()
-    .then(comments => {
-      res.send(comments)
-    })
-    .catch(err => console.error(err))
+    Comment.find()
+      .then(comments => {
+        res.send(comments)
+      })
+      .catch(err => console.error(err))
 })
 // Create
 router.post('/', (req, res) => {
@@ -45,8 +44,3 @@ router.delete('/:id', (req, res) => {
     .catch(err => console.error(err))
 })
 module.exports = router;
-
-
-
-
-
