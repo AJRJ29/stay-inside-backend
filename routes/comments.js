@@ -1,15 +1,12 @@
 require('dotenv').config()
 const express = require('express')
 const router = express.Router()
-const Comment = require('../models/Comment')
-// Show
-router.get('/', (req, res) => {
-    Comment.find()
-      .then(comments => {
-        res.send(comments)
-      })
-      .catch(err => console.error(err))
-})
+const Comment = require('../controllers/comment')
+
+
+// Index
+router.get('/', Comment.index)
+  
 // Create
 router.post('/', (req, res) => {
   // check the body of the request for empty string and remove them from the body
