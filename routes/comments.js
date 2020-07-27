@@ -2,19 +2,22 @@ require('dotenv').config()
 const express = require('express')
 const Comment = require('../models/comment')
 const router = express.Router()
+const Comment = require('../models/Comment')
+
 
 // Index
-router.get('/', async function index(req, res){
+router.get('/', async function index(req, res) {
   try {
       const comments = await Comment.find()
           .populate('postedBy', 'name')
-      res.json(comments)   
+      res.json(comments)
   }
   catch(error) {
       console.log(error)
       res.sendStatus(500)
   }
 })
+  
 // Create
 router.post('/', (req, res) => {
   // check the body of the request for empty string and remove them from the body

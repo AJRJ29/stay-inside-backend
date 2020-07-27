@@ -2,9 +2,9 @@
 
 // async function index(req, res) {
 //     try {
-//         const comments = await Comment.find()
+//         const comments = await Comment.findOne()
 //             .populate('postedBy', 'name')
-//         res.send(comments)   
+//         res.json(comments)
 //     }
 //     catch(error) {
 //         console.log(error)
