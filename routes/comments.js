@@ -1,12 +1,20 @@
 require('dotenv').config()
 const express = require('express')
+const Comment = require('../models/comment')
 const router = express.Router()
-const Comment = require('../controllers/comment')
-
 
 // Index
-router.get('/', Comment.index)
-  
+router.get('/', async function index(req, res){
+  try {
+      const comments = await Comment.find()
+          .populate('postedBy', 'name')
+      res.json(comments)   
+  }
+  catch(error) {
+      console.log(error)
+      res.sendStatus(500)
+  }
+})
 // Create
 router.post('/', (req, res) => {
   // check the body of the request for empty string and remove them from the body
@@ -31,8 +39,7 @@ router.put('/:id', (req, res) => {
 })
 // Delete
 router.delete('/:id', (req, res) => {
-  
-  Comment.findOneAndDelete({_id: req.params.id })
+  Comment.findByIdAndDelete({_id: req.params.id })
     .then(deleteComment => {
       console.log(deleteComment)
       res.send({message: 'Successful Deletion'})
