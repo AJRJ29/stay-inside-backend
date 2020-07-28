@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const Comment = require('../models/comment')
 const router = express.Router()
-const Comment = require('../models/Comment')
 
 
 // Index
