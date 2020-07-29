@@ -9,13 +9,16 @@ const CommentSchema = new Schema({
     ref: 'User',
     // required: true,
   },
+  name: {
+    type: String
+  },
   content: {
     type: String,
     required: true,
   },
   eventId: {
     type: String,
-    // required: true
+    required: true
   },
   date: {
     type: Date,
