@@ -27,6 +27,7 @@ app.use(bodyParser.json())
 
 //  config our DB
 const uri = process.env.MONGOD_URI
+console.log(uri)
 
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(uri, { useNewUrlParser: true });

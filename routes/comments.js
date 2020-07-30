@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const Comment = require('../models/comment')
+const Comment = require('../models/Comment')
 const router = express.Router()
 
 
